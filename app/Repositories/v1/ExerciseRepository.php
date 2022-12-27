@@ -49,4 +49,18 @@ class ExerciseRepository implements ExerciceRepositoryInterface
 			'exercise' => $exercise,
 		]);
 	}
+
+    public function destroy(Exercise $exercise): JsonResponse
+    {
+		/*
+ 		* @var App\Models\User $user
+		*/
+		$user = Auth::user();
+		$exercise->deletedBy()->associate($user)->save();
+		$exercise->delete();
+
+		return response()->json([
+			'success' => true,
+		]);
+    }
 }

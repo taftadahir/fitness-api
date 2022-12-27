@@ -9,4 +9,5 @@ interface ExerciceRepositoryInterface
 {
 	public function store(array $data): JsonResponse;
 	public function update(Exercise $exercise, array $data): JsonResponse;
+	public function destroy(Exercise $exercise): JsonResponse;
 }
