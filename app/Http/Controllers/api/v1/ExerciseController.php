@@ -33,9 +33,9 @@ class ExerciseController extends Controller
 		//
 	}
 
-	public function update(UpdateExerciseRequest $request, Exercise $exercise)
+	public function update(UpdateExerciseRequest $request, Exercise $exercise): JsonResponse
 	{
-		//
+		return $this->exerciseRepositoryInterface->update($exercise ,$request->validated());
 	}
 
 	public function destroy(Exercise $exercise)

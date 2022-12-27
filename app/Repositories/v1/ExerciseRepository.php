@@ -26,4 +26,27 @@ class ExerciseRepository implements ExerciceRepositoryInterface
 			'exercise' => $exercise,
 		]);
 	}
+
+	public function update(Exercise $exercise, array $data): JsonResponse
+	{
+		$validated =  array_filter($data, function ($value, $key) {
+			if ($key == 'name') {
+				return !is_null($value);
+			}
+			return true;
+		}, ARRAY_FILTER_USE_BOTH);
+
+		/*
+ 		* @var App\Models\User $user
+		*/
+		$user = Auth::user();
+		$exercise->updatedBy()->associate($user);
+		$exercise->update($validated);
+		$exercise->refresh();
+
+		return response()->json([
+			'success' => true,
+			'exercise' => $exercise,
+		]);
+	}
 }
