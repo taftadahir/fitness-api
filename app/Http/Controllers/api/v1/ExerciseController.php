@@ -28,9 +28,9 @@ class ExerciseController extends Controller
 		return $this->exerciseRepositoryInterface->store($request->validated());
 	}
 
-	public function show(Exercise $exercise)
+	public function show(Exercise $exercise): JsonResponse
 	{
-		//
+		return $this->exerciseRepositoryInterface->show($exercise);
 	}
 
 	public function update(UpdateExerciseRequest $request, Exercise $exercise): JsonResponse

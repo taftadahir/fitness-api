@@ -9,6 +9,20 @@ use Illuminate\Support\Facades\Auth;
 
 class ExerciseRepository implements ExerciceRepositoryInterface
 {
+	public function show(Exercise $exercise): JsonResponse
+	{
+		if (!$exercise->active) {
+			return response()->json([
+				'success' => false,
+			]);
+		}
+
+		return response()->json([
+			'success' => true,
+			'exercise' => $exercise,
+		]);
+	}
+
 	public function store(array $data): JsonResponse
 	{
 		/*
@@ -50,8 +64,8 @@ class ExerciseRepository implements ExerciceRepositoryInterface
 		]);
 	}
 
-    public function destroy(Exercise $exercise): JsonResponse
-    {
+	public function destroy(Exercise $exercise): JsonResponse
+	{
 		/*
  		* @var App\Models\User $user
 		*/
@@ -62,5 +76,5 @@ class ExerciseRepository implements ExerciceRepositoryInterface
 		return response()->json([
 			'success' => true,
 		]);
-    }
+	}
 }
