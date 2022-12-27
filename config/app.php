@@ -212,4 +212,14 @@ return [
 		// 'ExampleClass' => App\Example\ExampleClass::class,
 	])->toArray(),
 
+	/*
+    |--------------------------------------------------------------------------
+    | API
+    |--------------------------------------------------------------------------
+    |
+    | Here are api's config like the version
+ 	|
+	*/ 
+
+	'version' => 'v1'
 ];

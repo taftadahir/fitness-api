@@ -2,26 +2,18 @@
 
 namespace App\Providers;
 
+use App\Interfaces\AuthenticateRepositoryInterface;
+use App\Repositories\v1\AuthenticateRepository;
 use Illuminate\Support\ServiceProvider;
 
 class RepositoryServiceProvider extends ServiceProvider
 {
-    /**
-     * Register services.
-     *
-     * @return void
-     */
-    public function register()
+    public function register(): void
     {
-        //
+		$this->app->bind(AuthenticateRepositoryInterface::class, AuthenticateRepository::class);
     }
 
-    /**
-     * Bootstrap services.
-     *
-     * @return void
-     */
-    public function boot()
+    public function boot(): void
     {
         //
     }
