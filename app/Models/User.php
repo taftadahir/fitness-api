@@ -6,6 +6,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -30,7 +31,7 @@ class User extends Authenticatable
 
 	protected $hidden = [
 		'password',
-		'remember_token', 
+		'remember_token',
 		'deleted_at'
 	];
 
@@ -41,10 +42,10 @@ class User extends Authenticatable
 		'deleted_at' => 'datetime',
 	];
 
-    protected function password(): Attribute
-    {
-        return Attribute::make(
-            set: fn ($value) => Hash::make($value),
-        );
-    }
+	protected function password(): Attribute
+	{
+		return Attribute::make(
+			set: fn ($value) => Hash::make($value),
+		);
+	}
 }
