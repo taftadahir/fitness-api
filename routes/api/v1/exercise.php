@@ -8,4 +8,5 @@ Route::controller(ExerciseController::class)->middleware('auth:sanctum')->group(
 	Route::put('/exercises/{exercise}', 'update');
 	Route::delete('/exercises/{exercise}', 'destroy');
 	Route::get('/exercises/{exercise}', 'show');
+	Route::get('/exercises', 'index');
 });

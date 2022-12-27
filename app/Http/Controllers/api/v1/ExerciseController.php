@@ -18,9 +18,9 @@ class ExerciseController extends Controller
 		$this->exerciseRepositoryInterface = $exerciceRepositoryInterface;
 	}
 
-	public function index()
+	public function index(): JsonResponse
 	{
-		//
+		return $this->exerciseRepositoryInterface->index();
 	}
 
 	public function store(StoreExerciseRequest $request): JsonResponse
@@ -35,7 +35,7 @@ class ExerciseController extends Controller
 
 	public function update(UpdateExerciseRequest $request, Exercise $exercise): JsonResponse
 	{
-		return $this->exerciseRepositoryInterface->update($exercise ,$request->validated());
+		return $this->exerciseRepositoryInterface->update($exercise, $request->validated());
 	}
 
 	public function destroy(Exercise $exercise): JsonResponse

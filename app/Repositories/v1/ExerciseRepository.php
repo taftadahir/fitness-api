@@ -9,6 +9,16 @@ use Illuminate\Support\Facades\Auth;
 
 class ExerciseRepository implements ExerciceRepositoryInterface
 {
+	public function index(): JsonResponse
+	{
+		$exercises = Exercise::active()->get();
+
+		return response()->json([
+			'success' => true,
+			'exercises' => $exercises,
+		]);
+	}
+
 	public function show(Exercise $exercise): JsonResponse
 	{
 		if (!$exercise->active) {
