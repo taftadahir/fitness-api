@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\api\v1\StoreProgramRequest;
 use App\Http\Requests\api\v1\UpdateProgramRequest;
 use App\Interfaces\ProgramRepositoryInterface;
-use App\Models\api\v1\Program;
+use App\Models\Program;
 use Illuminate\Http\JsonResponse;
 
 class ProgramController extends Controller
@@ -35,7 +35,7 @@ class ProgramController extends Controller
 
 	public function update(UpdateProgramRequest $request, Program $program)
 	{
-		//
+		return $this->programRepositoryInterface->update($program, $request->validated());
 	}
 
 	public function destroy(Program $program)
