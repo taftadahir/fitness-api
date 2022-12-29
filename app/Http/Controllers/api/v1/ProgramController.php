@@ -18,9 +18,9 @@ class ProgramController extends Controller
 		$this->programRepositoryInterface = $programRepositoryInterface;
 	}
 
-	public function index()
+	public function index(): JsonResponse
 	{
-		//
+		return $this->programRepositoryInterface->index();
 	}
 
 	public function store(StoreProgramRequest $request): JsonResponse
@@ -33,7 +33,7 @@ class ProgramController extends Controller
 		//
 	}
 
-	public function update(UpdateProgramRequest $request, Program $program)
+	public function update(UpdateProgramRequest $request, Program $program): JsonResponse
 	{
 		return $this->programRepositoryInterface->update($program, $request->validated());
 	}
