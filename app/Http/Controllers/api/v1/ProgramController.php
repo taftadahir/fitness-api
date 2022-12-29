@@ -38,8 +38,8 @@ class ProgramController extends Controller
 		return $this->programRepositoryInterface->update($program, $request->validated());
 	}
 
-	public function destroy(Program $program)
+	public function destroy(Program $program): JsonResponse
 	{
-		//
+		return $this->programRepositoryInterface->destroy($program);
 	}
 }

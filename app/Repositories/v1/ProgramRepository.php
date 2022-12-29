@@ -59,4 +59,18 @@ class ProgramRepository implements ProgramRepositoryInterface
 			'program' => $program,
 		]);
 	}
+
+    public function destroy(Program $program): JsonResponse
+    {
+		/*
+ 		* @var App\Models\User $user
+		*/
+		$user = Auth::user();
+		$program->deletedBy()->associate($user)->save();
+		$program->delete();
+
+		return response()->json([
+			'success' => true,
+		]);
+    }
 }

@@ -7,4 +7,5 @@ Route::controller(ProgramController::class)->middleware('auth:sanctum')->group(f
 	Route::post('/programs', 'store');
 	Route::put('/programs/{program}', 'update');
 	Route::get('/programs', 'index');
+	Route::delete('/programs/{program}', 'destroy');
 });
