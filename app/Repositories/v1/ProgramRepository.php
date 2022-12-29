@@ -9,6 +9,20 @@ use Illuminate\Support\Facades\Auth;
 
 class ProgramRepository implements ProgramRepositoryInterface
 {
+    public function show(Program $program): JsonResponse
+    {
+		if (!$program->active) {
+			return response()->json([
+				'success' => false,
+			]);
+		}
+
+		return response()->json([
+			'success' => true,
+			'program' => $program,
+		]);
+    }
+
     public function index(): JsonResponse
     {
 		$programs = Program::active()->get();

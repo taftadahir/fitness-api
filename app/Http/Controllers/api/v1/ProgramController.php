@@ -28,9 +28,9 @@ class ProgramController extends Controller
 		return $this->programRepositoryInterface->store($request->validated());
 	}
 
-	public function show(Program $program)
+	public function show(Program $program): JsonResponse
 	{
-		//
+		return $this->programRepositoryInterface->show($program);
 	}
 
 	public function update(UpdateProgramRequest $request, Program $program): JsonResponse
