@@ -38,8 +38,8 @@ class WorkoutController extends Controller
 		return $this->inner->update($workout, $request->validated());
 	}
 
-	public function destroy(Workout $workout)
+	public function destroy(Workout $workout): JsonResponse
 	{
-		//
+		return $this->inner->destroy($workout);
 	}
 }

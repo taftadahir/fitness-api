@@ -57,4 +57,18 @@ class WorkoutRepository implements WorkoutRepositoryInterface
 			'workout' => $workout,
 		]);
 	}
+
+    public function destroy(Workout $workout): JsonResponse
+    {
+		/*
+ 		* @var App\Models\User $user
+		*/
+		$user = Auth::user();
+		$workout->deletedBy()->associate($user)->save();
+		$workout->delete();
+
+		return response()->json([
+			'success' => true,
+		]);
+    }
 }

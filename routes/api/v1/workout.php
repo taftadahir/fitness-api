@@ -6,4 +6,5 @@ use Illuminate\Support\Facades\Route;
 Route::controller(WorkoutController::class)->middleware('auth:sanctum')->group(function () {
 	Route::post('/workouts', 'store');
 	Route::put('/workouts/{workout}', 'update');
+	Route::delete('/workouts/{workout}', 'destroy');
 });
