@@ -29,9 +29,9 @@ class WorkoutDayController extends Controller
 		return $this->workoutDayRepositoryInterface->store($request->validated(), $program);
 	}
 
-	public function show(WorkoutDay $workoutDay)
+	public function show(WorkoutDay $workoutDay): JsonResponse
 	{
-		//
+		return $this->workoutDayRepositoryInterface->show($workoutDay);
 	}
 
 	public function update(UpdateWorkoutDayRequest $request, WorkoutDay $workoutDay): JsonResponse

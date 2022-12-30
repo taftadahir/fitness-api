@@ -10,6 +10,14 @@ use Illuminate\Support\Facades\Auth;
 
 class WorkoutDayRepository implements WorkoutDayRepositoryInterface
 {
+	public function show(WorkoutDay $workoutDay): JsonResponse
+	{
+		return response()->json([
+			'success' => true,
+			'workout_day' => $workoutDay,
+		]);
+	}
+
 	public function store(array $data, Program $program): JsonResponse
 	{
 		/*
