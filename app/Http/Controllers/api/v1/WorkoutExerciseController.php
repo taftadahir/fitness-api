@@ -44,4 +44,9 @@ class WorkoutExerciseController extends Controller
 	{
 		return $this->inner->destroy($workoutExercise);
 	}
+
+	public function destroyAll(Workout $workout): JsonResponse
+	{
+		return $this->inner->destroyAll($workout);
+	}
 }

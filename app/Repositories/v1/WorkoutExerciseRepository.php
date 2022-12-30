@@ -47,8 +47,8 @@ class WorkoutExerciseRepository implements WorkoutExerciseRepositoryInterface
 		]);
 	}
 
-    public function destroy(WorkoutExercise $workoutExercise): JsonResponse
-    {
+	public function destroy(WorkoutExercise $workoutExercise): JsonResponse
+	{
 		/*
  		* @var App\Models\User $user
 		*/
@@ -59,5 +59,21 @@ class WorkoutExerciseRepository implements WorkoutExerciseRepositoryInterface
 		return response()->json([
 			'success' => true,
 		]);
-    }
+	}
+
+	/**
+	 * Delete all workout exercise which belong to a workout 
+	 */
+	public function destroyAll(Workout $workout): JsonResponse
+	{
+		$workoutExercises = WorkoutExercise::where('workout_id', $workout->id)->get();
+
+		foreach ($workoutExercises as $workoutExercise) {
+			$this->destroy($workoutExercise);
+		}
+
+		return response()->json([
+			'success' => true,
+		]);;
+	}
 }
