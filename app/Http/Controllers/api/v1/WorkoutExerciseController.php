@@ -20,9 +20,9 @@ class WorkoutExerciseController extends Controller
 		$this->inner = $inner;
 	}
 
-	public function index()
+	public function index(Workout $workout): JsonResponse
 	{
-		//
+		return $this->inner->index($workout);
 	}
 
 	public function store(StoreWorkoutExerciseRequest $request, Workout $workout, Exercise $exercise): JsonResponse

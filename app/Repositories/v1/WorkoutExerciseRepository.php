@@ -11,6 +11,16 @@ use Illuminate\Support\Facades\Auth;
 
 class WorkoutExerciseRepository implements WorkoutExerciseRepositoryInterface
 {
+	public function index(Workout $workout): JsonResponse
+	{
+		$workoutExercises = WorkoutExercise::where('workout_id', $workout->id)->get();
+
+		return response()->json([
+			'success' => true,
+			'workout_exercises' => $workoutExercises
+		]);;
+	}
+
 	public function show(WorkoutExercise $workoutExercise): JsonResponse
 	{
 		return response()->json([
