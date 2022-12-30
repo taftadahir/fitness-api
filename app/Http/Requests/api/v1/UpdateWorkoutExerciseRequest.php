@@ -17,7 +17,10 @@ class UpdateWorkoutExerciseRequest extends FormRequest
 	public function rules(): array
 	{
 		return [
-			//
+			'order' => ['nullable', 'integer', 'min:0', 'max:65535'],
+			'reps' => ['nullable', 'integer', 'min:0', 'max:65535'],
+			'sets' => ['nullable', 'integer', 'min:0', 'max:65535'],
+			'weight' => ['nullable', 'integer', 'min:0', 'max:65535'],
 		];
 	}
 }

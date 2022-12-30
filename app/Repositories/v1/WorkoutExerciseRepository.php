@@ -30,4 +30,20 @@ class WorkoutExerciseRepository implements WorkoutExerciseRepositoryInterface
 			'workout_exercise' => $workoutExercise,
 		]);
 	}
+
+	public function update(array $data, WorkoutExercise $workoutExercise): JsonResponse
+	{
+		/*
+ 		* @var App\Models\User $user
+		*/
+		$user = Auth::user();
+		$workoutExercise->updatedBy()->associate($user);
+		$workoutExercise->update($data);
+		$workoutExercise->refresh();
+
+		return response()->json([
+			'success' => true,
+			'workout_exercise' => $workoutExercise,
+		]);
+	}
 }

@@ -35,9 +35,9 @@ class WorkoutExerciseController extends Controller
 		//
 	}
 
-	public function update(UpdateWorkoutExerciseRequest $request, WorkoutExercise $workoutExercise)
+	public function update(UpdateWorkoutExerciseRequest $request, WorkoutExercise $workoutExercise): JsonResponse
 	{
-		//
+		return $this->inner->update($request->validated(), $workoutExercise);
 	}
 
 	public function destroy(WorkoutExercise $workoutExercise)
