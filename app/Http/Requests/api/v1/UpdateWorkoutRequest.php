@@ -6,25 +6,19 @@ use Illuminate\Foundation\Http\FormRequest;
 
 class UpdateWorkoutRequest extends FormRequest
 {
-    /**
-     * Determine if the user is authorized to make this request.
-     *
-     * @return bool
-     */
-    public function authorize()
-    {
-        return false;
-    }
+	public function authorize(): bool
+	{
+		return true;
+	}
 
-    /**
-     * Get the validation rules that apply to the request.
-     *
-     * @return array<string, mixed>
-     */
-    public function rules()
-    {
-        return [
-            //
-        ];
-    }
+	/**
+	 * @return array<string, mixed>
+	 */
+	public function rules(): array
+	{
+		return [
+			'order' => ['nullable', 'integer', 'min:0', 'max:65535'],
+			'workout_day_id' => ['nullable', 'integer', 'exists:App\Models\WorkoutDay,id']
+		];
+	}
 }

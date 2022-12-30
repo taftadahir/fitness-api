@@ -18,28 +18,28 @@ class WorkoutController extends Controller
 		$this->inner = $inner;
 	}
 
-    public function index()
-    {
-        //
-    }
+	public function index()
+	{
+		//
+	}
 
-    public function store(StoreWorkoutRequest $request): JsonResponse
-    {
-        return $this->inner->store($request->validated());
-    }
+	public function store(StoreWorkoutRequest $request): JsonResponse
+	{
+		return $this->inner->store($request->validated());
+	}
 
-    public function show(Workout $workout)
-    {
-        //
-    }
+	public function show(Workout $workout)
+	{
+		//
+	}
 
-    public function update(UpdateWorkoutRequest $request, Workout $workout)
-    {
-        //
-    }
+	public function update(UpdateWorkoutRequest $request, Workout $workout): JsonResponse
+	{
+		return $this->inner->update($workout, $request->validated());
+	}
 
-    public function destroy(Workout $workout)
-    {
-        //
-    }
+	public function destroy(Workout $workout)
+	{
+		//
+	}
 }

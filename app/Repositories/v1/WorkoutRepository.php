@@ -33,4 +33,28 @@ class WorkoutRepository implements WorkoutRepositoryInterface
 			'workout' => $workout,
 		]);
 	}
+
+	public function update(Workout $workout, array $data): JsonResponse
+	{
+		/*
+ 		* @var App\Models\User $user
+		*/
+		$user = Auth::user();
+
+		if (isset($data['workout_day_id'])) {
+			$workoutDay = WorkoutDay::where('id', $data['workout_day_id'])->first();
+			$workout->workoutDay()->associate($workoutDay);
+		} else {
+			$workout->workoutDay()->dissociate();
+		}
+
+		$workout->updatedBy()->associate($user);
+		$workout->update($data);
+		$workout->refresh();
+
+		return response()->json([
+			'success' => true,
+			'workout' => $workout,
+		]);
+	}
 }
