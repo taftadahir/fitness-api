@@ -30,9 +30,9 @@ class WorkoutExerciseController extends Controller
 		return $this->inner->store($workout, $exercise, $request->validated());
 	}
 
-	public function show(WorkoutExercise $workoutExercise)
+	public function show(WorkoutExercise $workoutExercise): JsonResponse
 	{
-		//
+		return $this->inner->show($workoutExercise);
 	}
 
 	public function update(UpdateWorkoutExerciseRequest $request, WorkoutExercise $workoutExercise): JsonResponse

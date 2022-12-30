@@ -11,6 +11,14 @@ use Illuminate\Support\Facades\Auth;
 
 class WorkoutExerciseRepository implements WorkoutExerciseRepositoryInterface
 {
+	public function show(WorkoutExercise $workoutExercise): JsonResponse
+	{
+		return response()->json([
+			'success' => true,
+			'workout_exercise' => $workoutExercise,
+		]);
+	}
+
 	public function store(Workout $workout, Exercise $exercise, array $data): JsonResponse
 	{
 		/*
