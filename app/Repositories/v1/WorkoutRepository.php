@@ -3,6 +3,7 @@
 namespace App\Repositories\v1;
 
 use App\Interfaces\WorkoutRepositoryInterface;
+use App\Models\Program;
 use App\Models\Workout;
 use App\Models\WorkoutDay;
 use Illuminate\Http\JsonResponse;
@@ -10,6 +11,18 @@ use Illuminate\Support\Facades\Auth;
 
 class WorkoutRepository implements WorkoutRepositoryInterface
 {
+	public function index(Program $program): JsonResponse
+	{
+		$workouts = Workout::whereHas('workoutDay', function ($query) use ($program) {
+			$query->where('program_id', $program->id);
+		})->get();
+
+		return response()->json([
+			'success' => true,
+			'workouts' => $workouts,
+		]);
+	}
+
 	public function show(Workout $workout): JsonResponse
 	{
 		return response()->json([
