@@ -10,6 +10,14 @@ use Illuminate\Support\Facades\Auth;
 
 class WorkoutRepository implements WorkoutRepositoryInterface
 {
+	public function show(Workout $workout): JsonResponse
+	{
+		return response()->json([
+			'success' => true,
+			'workout' => $workout,
+		]);
+	}
+
 	public function store(array $data): JsonResponse
 	{
 		/*
@@ -58,8 +66,8 @@ class WorkoutRepository implements WorkoutRepositoryInterface
 		]);
 	}
 
-    public function destroy(Workout $workout): JsonResponse
-    {
+	public function destroy(Workout $workout): JsonResponse
+	{
 		/*
  		* @var App\Models\User $user
 		*/
@@ -70,5 +78,5 @@ class WorkoutRepository implements WorkoutRepositoryInterface
 		return response()->json([
 			'success' => true,
 		]);
-    }
+	}
 }
