@@ -11,4 +11,5 @@ interface WorkoutExerciseRepositoryInterface
 {
 	public function store(Workout $workout, Exercise $exercise, array $data): JsonResponse;
 	public function update(array $data, WorkoutExercise $workoutExercise): JsonResponse;
+	public function destroy(WorkoutExercise $workoutExercise): JsonResponse;
 }
