@@ -4,7 +4,7 @@ namespace App\Http\Requests\api\v1;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class StoreWorkoutDayRequest extends FormRequest
+class StoreWorkoutRequest extends FormRequest
 {
 	public function authorize(): bool
 	{
@@ -17,8 +17,8 @@ class StoreWorkoutDayRequest extends FormRequest
 	public function rules(): array
 	{
 		return [
-			'day_number' => ['required', 'integer', 'min:0', 'max:65535'],
-			'is_rest_day' => ['nullable', 'boolean']
+			'order' => ['nullable', 'integer', 'min:0', 'max:65535'],
+			'workout_day_id' => ['nullable', 'integer', 'exists:App\Models\WorkoutDay,id']
 		];
 	}
 }
