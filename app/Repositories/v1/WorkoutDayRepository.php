@@ -27,4 +27,27 @@ class WorkoutDayRepository implements WorkoutDayRepositoryInterface{
 			'workout_day' => $workoutDay,
 		]);
     }
+
+    public function update(WorkoutDay $workoutDay, array $data): JsonResponse
+	{
+		$validated =  array_filter($data, function ($value, $key) {
+			if ($key == 'day_number' || $key == 'is_rest_day') {
+				return !is_null($value);
+			}
+			return true;
+		}, ARRAY_FILTER_USE_BOTH);
+		
+		/*
+ 		* @var App\Models\User $user
+		*/
+		$user = Auth::user();
+		$workoutDay->updatedBy()->associate($user);
+		$workoutDay->update($validated);
+		$workoutDay->refresh();
+
+		return response()->json([
+			'success' => true,
+			'workout_day' => $workoutDay,
+		]);
+    }
 }
