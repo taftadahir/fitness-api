@@ -24,3 +24,4 @@ require __DIR__ . '/api/' . config('app.version') . '/program.php';
 require __DIR__ . '/api/' . config('app.version') . '/workout_day.php';
 require __DIR__ . '/api/' . config('app.version') . '/workout.php';
 require __DIR__ . '/api/' . config('app.version') . '/workout_exercise.php';
+require __DIR__ . '/api/' . config('app.version') . '/workout_progress.php';

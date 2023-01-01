@@ -15,6 +15,7 @@ class DatabaseSeeder extends Seeder
 			WorkoutDaySeeder::class,
 			WorkoutSeeder::class,
 			WorkoutExerciseSeeder::class,
+			WorkoutProgressSeeder::class,
 		]);
 	}
 }
