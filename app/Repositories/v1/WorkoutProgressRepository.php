@@ -10,6 +10,14 @@ use Illuminate\Support\Facades\Auth;
 
 class WorkoutProgressRepository implements WorkoutProgressRepositoryInterface
 {
+	public function show(WorkoutProgress $workoutProgress): JsonResponse
+	{
+		return response()->json([
+			'success' => true,
+			'workout_progress' => $workoutProgress,
+		]);
+	}
+
     public function store(array $data, WorkoutExercise $workoutExercise): JsonResponse
     {
         /*

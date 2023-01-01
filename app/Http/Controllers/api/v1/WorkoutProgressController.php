@@ -31,7 +31,7 @@ class WorkoutProgressController extends Controller
 
     public function show(WorkoutProgress $workoutProgress)
     {
-        //
+        return $this->inner->show($workoutProgress);
     }
 
     public function update(UpdateWorkoutProgressRequest $request, WorkoutProgress $workoutProgress)
