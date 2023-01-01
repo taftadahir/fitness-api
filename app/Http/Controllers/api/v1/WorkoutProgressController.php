@@ -36,7 +36,7 @@ class WorkoutProgressController extends Controller
 
     public function update(UpdateWorkoutProgressRequest $request, WorkoutProgress $workoutProgress)
     {
-        //
+        return $this->inner->update($request->validated(), $workoutProgress);
     }
 
     public function destroy(WorkoutProgress $workoutProgress)

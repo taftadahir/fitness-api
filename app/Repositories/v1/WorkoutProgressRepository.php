@@ -28,4 +28,20 @@ class WorkoutProgressRepository implements WorkoutProgressRepositoryInterface
 			'workout_progress' => $workoutProgress,
 		]);
     }
+
+	public function update(array $data, WorkoutProgress $workoutProgress): JsonResponse
+	{
+		/*
+ 		* @var App\Models\User $user
+		*/
+		$user = Auth::user();
+		$workoutProgress->updatedBy()->associate($user);
+		$workoutProgress->update($data);
+		$workoutProgress->refresh();
+
+		return response()->json([
+			'success' => true,
+			'workout_progress' => $workoutProgress,
+		]);
+	}
 }
