@@ -10,4 +10,5 @@ interface WorkoutProgressRepositoryInterface
 {
 	public function store(array $data, WorkoutExercise $workoutExercise): JsonResponse;
 	public function update(array $data, WorkoutProgress $workoutProgress): JsonResponse;
+	public function destroy(WorkoutProgress $workoutProgress): JsonResponse;
 }

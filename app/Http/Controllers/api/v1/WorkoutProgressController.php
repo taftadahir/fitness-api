@@ -39,8 +39,8 @@ class WorkoutProgressController extends Controller
         return $this->inner->update($request->validated(), $workoutProgress);
     }
 
-    public function destroy(WorkoutProgress $workoutProgress)
+    public function destroy(WorkoutProgress $workoutProgress): JsonResponse
     {
-        //
+        return $this->inner->destroy($workoutProgress);
     }
 }

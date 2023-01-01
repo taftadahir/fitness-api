@@ -44,4 +44,18 @@ class WorkoutProgressRepository implements WorkoutProgressRepositoryInterface
 			'workout_progress' => $workoutProgress,
 		]);
 	}
+
+	public function destroy(WorkoutProgress $workoutProgress): JsonResponse
+	{
+		/*
+ 		* @var App\Models\User $user
+		*/
+		$user = Auth::user();
+		$workoutProgress->deletedBy()->associate($user)->save();
+		$workoutProgress->delete();
+		
+		return response()->json([
+			'success' => true,
+		]);
+	}
 }
