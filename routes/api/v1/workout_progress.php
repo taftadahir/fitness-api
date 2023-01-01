@@ -8,4 +8,5 @@ Route::controller(WorkoutProgressController::class)->middleware('auth:sanctum')-
 	Route::put('/workout_progresses/{workoutProgress}', 'update');
 	Route::delete('/workout_progresses/{workoutProgress}', 'destroy');
 	Route::get('/workout_progresses/{workoutProgress}', 'show');
+	Route::get('programs/{program}/workout_progresses', 'index');
 });

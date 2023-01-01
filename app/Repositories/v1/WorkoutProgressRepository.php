@@ -3,6 +3,7 @@
 namespace App\Repositories\v1;
 
 use App\Interfaces\WorkoutProgressRepositoryInterface;
+use App\Models\Program;
 use App\Models\WorkoutExercise;
 use App\Models\WorkoutProgress;
 use Illuminate\Http\JsonResponse;
@@ -15,6 +16,20 @@ class WorkoutProgressRepository implements WorkoutProgressRepositoryInterface
 		return response()->json([
 			'success' => true,
 			'workout_progress' => $workoutProgress,
+		]);
+	}
+
+	public function index(Program $program): JsonResponse
+	{
+		$workoutProgresses = WorkoutProgress::whereHas('workoutExercise.workout.workoutDay.program', function ($query) use ($program) { 
+			$query->where('id', $program->id); 
+		})
+		->where('created_by', Auth::id())
+		->get();
+		
+		return response()->json([
+			'success' => true,
+			'workout_progresses' => $workoutProgresses,
 		]);
 	}
 

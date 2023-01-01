@@ -11,11 +11,9 @@ return new class extends Migration
 		Schema::create('programs', function (Blueprint $table) {
 			$table->id();
 			$table->string('u_id')->nullable();
-
 			$table->string('name');
 			$table->text('description')->nullable();
 			$table->boolean('active')->default(true);
-
 			$table->foreignId('created_by')->constrained('users');
 			$table->foreignId('updated_by')->constrained('users');
 			$table->foreignId('deleted_by')->nullable()->constrained('users');

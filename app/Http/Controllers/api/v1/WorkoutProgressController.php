@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\api\v1\StoreWorkoutProgressRequest;
 use App\Http\Requests\api\v1\UpdateWorkoutProgressRequest;
 use App\Interfaces\WorkoutProgressRepositoryInterface;
+use App\Models\Program;
 use App\Models\WorkoutExercise;
 use App\Models\WorkoutProgress;
 use Illuminate\Http\JsonResponse;
@@ -19,9 +20,9 @@ class WorkoutProgressController extends Controller
 		$this->inner = $inner;
 	}
 
-    public function index()
+    public function index(Program $program): JsonResponse
     {
-        //
+        return $this->inner->index($program);
     }
 
     public function store(StoreWorkoutProgressRequest $request, WorkoutExercise $workoutExercise): JsonResponse
