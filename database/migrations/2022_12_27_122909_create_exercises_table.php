@@ -9,9 +9,8 @@ return new class extends Migration
 	public function up()
 	{
 		Schema::create('exercises', function (Blueprint $table) {
-			$table->id();
-			$table->string('u_id')->nullable();
-			$table->string('name');
+			$table->uuid('id');
+			$table->string('name')->unique();
 			$table->text('description')->nullable();
 			$table->boolean('active')->default(true);
 

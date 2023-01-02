@@ -11,7 +11,7 @@ return new class extends Migration
 		Schema::create('workout_exercises', function (Blueprint $table) {
 			$table->id();
 			$table->foreignId('workout_id')->constrained('workouts');
-			$table->foreignId('exercise_id')->constrained('exercises');
+			$table->uuid('exercise_id')->references('id')->on('exercises');
 			$table->unsignedSmallInteger('order')->nullable();
 			$table->unsignedSmallInteger('reps')->nullable();
 			$table->unsignedSmallInteger('sets')->nullable();
